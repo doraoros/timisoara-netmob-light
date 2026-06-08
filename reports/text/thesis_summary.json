@@ -1,0 +1,138 @@
+{
+  "n_rows": 31320,
+  "n_sessions": 16,
+  "n_routes": 9,
+  "time_start": "2026-05-13 08:05:00",
+  "time_end": "2026-05-29 18:51:59",
+  "operators": {
+    "Digi": 17220,
+    "Orange": 8340,
+    "Vodafone": 5760
+  },
+  "transport_modes": {
+    "tram": 10920,
+    "car": 10800,
+    "walking": 5700,
+    "bus": 3900
+  },
+  "handoff_rate": 0.01784802043422733,
+  "handoff_next_rate": 0.26772030651340994,
+  "speedtest_matched_rate": 0.47126436781609193,
+  "speedtest_rows_with_dl": 14760,
+  "mean_speed_kmh": 22.885923371647507,
+  "per_session": [
+    {
+      "session_id": "S01",
+      "rows": 1920,
+      "handoff_next_rate": 0.2421875,
+      "operator": "Orange",
+      "route_id": "complex_aem"
+    },
+    {
+      "session_id": "S02",
+      "rows": 2280,
+      "handoff_next_rate": 0.20394736842105263,
+      "operator": "Digi",
+      "route_id": "complex_aem"
+    },
+    {
+      "session_id": "S03",
+      "rows": 2040,
+      "handoff_next_rate": 0.375,
+      "operator": "Digi",
+      "route_id": "aem_complex"
+    },
+    {
+      "session_id": "S04",
+      "rows": 1800,
+      "handoff_next_rate": 0.10833333333333334,
+      "operator": "Digi",
+      "route_id": "victoriei_iulius"
+    },
+    {
+      "session_id": "S05",
+      "rows": 2040,
+      "handoff_next_rate": 0.22794117647058823,
+      "operator": "Orange",
+      "route_id": "victoriei_iulius"
+    },
+    {
+      "session_id": "S06",
+      "rows": 2040,
+      "handoff_next_rate": 0.09558823529411764,
+      "operator": "Digi",
+      "route_id": "iulius_airport"
+    },
+    {
+      "session_id": "S07",
+      "rows": 2040,
+      "handoff_next_rate": 0.49264705882352944,
+      "operator": "Vodafone",
+      "route_id": "iulius_airport"
+    },
+    {
+      "session_id": "S08",
+      "rows": 1560,
+      "handoff_next_rate": 0.34615384615384615,
+      "operator": "Digi",
+      "route_id": "iulius_airport"
+    },
+    {
+      "session_id": "S09",
+      "rows": 2160,
+      "handoff_next_rate": 0.25,
+      "operator": "Digi",
+      "route_id": "gara_traian"
+    },
+    {
+      "session_id": "S10",
+      "rows": 2520,
+      "handoff_next_rate": 0.21428571428571427,
+      "operator": "Digi",
+      "route_id": "gara_traian"
+    },
+    {
+      "session_id": "S11",
+      "rows": 1860,
+      "handoff_next_rate": 0.11290322580645161,
+      "operator": "Orange",
+      "route_id": "bega_parcuri"
+    },
+    {
+      "session_id": "S12",
+      "rows": 1620,
+      "handoff_next_rate": 0.12962962962962962,
+      "operator": "Digi",
+      "route_id": "victoriei_michelangelo_complex"
+    },
+    {
+      "session_id": "S13",
+      "rows": 1440,
+      "handoff_next_rate": 0.4895833333333333,
+      "operator": "Orange",
+      "route_id": "iulius_dumbravita"
+    },
+    {
+      "session_id": "S14",
+      "rows": 1440,
+      "handoff_next_rate": 0.4375,
+      "operator": "Vodafone",
+      "route_id": "iulius_dumbravita"
+    },
+    {
+      "session_id": "S15",
+      "rows": 2280,
+      "handoff_next_rate": 0.3881578947368421,
+      "operator": "Orange",
+      "route_id": "iulius_airport"
+    },
+    {
+      "session_id": "S16",
+      "rows": 2280,
+      "handoff_next_rate": 0.25,
+      "operator": "Vodafone",
+      "route_id": "complex_giroc"
+    }
+  ],
+  "speedtest_file_rows": 218
+}

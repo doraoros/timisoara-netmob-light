@@ -1,0 +1,22 @@
+{
+  "seq_len": 30,
+  "epochs": 30,
+  "n_per_timestep_features": 21,
+  "results": {
+    "GRU": {
+      "roc_auc": 0.7432999365690749,
+      "pr_auc": 0.41242649677346027,
+      "n_params": 16769
+    },
+    "Transformer": {
+      "roc_auc": 0.7605473401043935,
+      "pr_auc": 0.5134125426748223,
+      "n_params": 68417
+    },
+    "XGBoost (engineered, Stage 2)": {
+      "roc_auc": 0.7924417085081504,
+      "pr_auc": 0.4500115975974682,
+      "n_params": null
+    }
+  }
+}

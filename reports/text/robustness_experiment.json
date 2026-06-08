@@ -1,0 +1,149 @@
+{
+  "per_session": {
+    "n_sessions_scored": 16,
+    "roc_auc": {
+      "median": 0.9531191555164085,
+      "q25": 0.9231713357152549,
+      "q75": 0.9747334318035321,
+      "min": 0.8005050320960654,
+      "max": 0.9932435953104646
+    },
+    "pr_auc": {
+      "median": 0.857296924854136,
+      "q25": 0.641419170391323,
+      "q75": 0.9220073853519506,
+      "min": 0.2811731930403703,
+      "max": 0.9906353763044891
+    }
+  },
+  "leave_one_route_out": {
+    "routes": [
+      {
+        "route": "victoriei_michelangelo_complex",
+        "n_test": 1620,
+        "prevalence": 0.12962962962962962,
+        "pr_auc": 0.21688417401621454,
+        "roc_auc": 0.7421428571428572
+      },
+      {
+        "route": "iulius_airport",
+        "n_test": 7920,
+        "prevalence": 0.3314393939393939,
+        "pr_auc": 0.43359923446843196,
+        "roc_auc": 0.7081032780250911
+      },
+      {
+        "route": "complex_aem",
+        "n_test": 4200,
+        "prevalence": 0.22142857142857142,
+        "pr_auc": 0.45117714260147035,
+        "roc_auc": 0.815605866298379
+      },
+      {
+        "route": "victoriei_iulius",
+        "n_test": 3840,
+        "prevalence": 0.171875,
+        "pr_auc": 0.6557524751821855,
+        "roc_auc": 0.9425245378311415
+      },
+      {
+        "route": "complex_giroc",
+        "n_test": 2280,
+        "prevalence": 0.25,
+        "pr_auc": 0.7097200253735445,
+        "roc_auc": 0.851405560685339
+      },
+      {
+        "route": "gara_traian",
+        "n_test": 4680,
+        "prevalence": 0.23076923076923078,
+        "pr_auc": 0.7743420054639724,
+        "roc_auc": 0.9082043467078189
+      },
+      {
+        "route": "iulius_dumbravita",
+        "n_test": 2880,
+        "prevalence": 0.4635416666666667,
+        "pr_auc": 0.7865739374664847,
+        "roc_auc": 0.9085417499969698
+      },
+      {
+        "route": "bega_parcuri",
+        "n_test": 1860,
+        "prevalence": 0.11290322580645161,
+        "pr_auc": 0.8629605796724015,
+        "roc_auc": 0.9644357864357864
+      },
+      {
+        "route": "aem_complex",
+        "n_test": 2040,
+        "prevalence": 0.375,
+        "pr_auc": 0.9689545085840228,
+        "roc_auc": 0.9789542483660131
+      }
+    ],
+    "roc_auc_mean": 0.8688798034988217,
+    "pr_auc_mean": 0.6511071203143032
+  },
+  "gps_jitter": [
+    {
+      "sigma_kmh": 0,
+      "pr_auc": 0.5099108027905347,
+      "roc_auc": 0.8251267077804436
+    },
+    {
+      "sigma_kmh": 1,
+      "pr_auc": 0.51014728122075,
+      "roc_auc": 0.8252632798451265
+    },
+    {
+      "sigma_kmh": 2,
+      "pr_auc": 0.5100883059710364,
+      "roc_auc": 0.8253732225399314
+    },
+    {
+      "sigma_kmh": 5,
+      "pr_auc": 0.5083111828628564,
+      "roc_auc": 0.8252488737925696
+    },
+    {
+      "sigma_kmh": 10,
+      "pr_auc": 0.5055939834246265,
+      "roc_auc": 0.8230580792265729
+    }
+  ],
+  "sampling_rate": [
+    {
+      "period_s": 1,
+      "n_rows": 31320,
+      "pr_auc": 0.41809356528965624,
+      "roc_auc": 0.7690895751656465
+    },
+    {
+      "period_s": 2,
+      "n_rows": 15660,
+      "pr_auc": 0.2684967764786252,
+      "roc_auc": 0.6031706703920305
+    },
+    {
+      "period_s": 3,
+      "n_rows": 10440,
+      "pr_auc": 0.2574120222045209,
+      "roc_auc": 0.5978334135772749
+    },
+    {
+      "period_s": 5,
+      "n_rows": 6264,
+      "pr_auc": 0.22169071283602682,
+      "roc_auc": 0.491385239700117
+    }
+  ],
+  "edge": {
+    "n_test_samples": 8520,
+    "batch_throughput_samples_per_s": 134173.65093573328,
+    "batch_latency_per_sample_ms": 0.007453028169286245,
+    "single_sample_latency_ms": 13.333222000001115,
+    "xgboost_model_size_kb": 570.248046875,
+    "n_trees": 300
+  }
+}

@@ -1,0 +1,16 @@
+feature,importance
+cat__route_id_aem_complex,0.0081199811399611
+cat__route_id_iulius_airport,0.0086431403004801
+num__day_of_week,0.0144741725415369
+cat__transport_mode_walking,0.0154886575495353
+num__frequency,0.0160670779101484
+num__is_high_speed,0.0166321558797555
+num__area,0.0168540714394415
+num__hour,0.0245549687714606
+cat__transport_mode_car,0.039867380129739
+num__is_peak_hour,0.0416247480770787
+num__code,0.0739529599247657
+num__cells_seen_in_session,0.0882456652941
+num__radio_cell_index,0.1014109495126921
+num__minute,0.1737787394953322
+num__speed_kmh,0.3211617463153527
