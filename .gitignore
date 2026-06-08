@@ -1,0 +1,51 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# PDF-uri mari locale (păstrează manual, nu în git)
+*.pdf
+!docs/**/*.pdf
+!reports/figures/**/route_map.pdf
+
+# Date mari / regenerate
+data/processed/*.csv
+data/processed/*.parquet
+data/interim/*.parquet
+
+# Artefacte model regenerate (binare)
+models/*.joblib
+
+# Păstrează structura de foldere
+!data/**/.gitkeep
+
+# Rapoarte regenerate (opțional — comentează dacă vrei să versionezi figurile)
+# reports/figures/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local privat — paper / build articol (păstrează pe disk, nu urca pe GitHub)
+dissertation/ARTICLE*.docx
+scripts/build_article*.py
+scripts/experiment_ablation.py
+reports/figures/article_en/
+reports/text/article_en_stats.json
+reports/text/ablation_study.json
+.git-rewrite/
+
+# MS Office temporary lock files
+~$*
+
+# Jupyter
+*.nbconvert.ipynb

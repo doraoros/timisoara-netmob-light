@@ -1,0 +1,17 @@
+session_id,json_file,gps_file
+S01,JSON_05_14_08_21.txt,gps_complex_aem.csv
+S02,JSON_14_05_19_12.txt,gps_complex_aem_evening.csv
+S03,JSON_14_05_21_28.txt,gps_aem_complex_evening.csv
+S04,JSON_05_19_14_18.txt,gps_victoriei_iulius.csv
+S05,JSON_19.05_14_21.txt,gps_victoriei_iulius_evening.csv
+S06,JSON_05_21_17_44.txt,gps_iulius_airport.csv
+S07,JSON_21.05_17_45.txt,gps_iulius_airport.csv
+S08,JSON_21.05_17_46.txt,gps_iulius_airport_part2.csv
+S09,JSON_13.05_18_16.txt,gps_gara_traian.csv
+S10,JSON_13.05_19_28.txt,gps_gara_traian_morning.csv
+S11,JSON_15.05_11_44.txt,gps_bega_parcuri.csv
+S12,JSON_16.05_10_58.txt,gps_01_victoriei_michelangelo_complex.csv
+S13,JSON_21.05_07_05.txt,gps_iulius_dumbravita.csv
+S14,JSON_21.05_08_08.txt,gps_iulius_dumbravita.csv
+S15,JSON_21.05_11_10.txt,gps_iulius_airport_morning.csv
+S16,JSON_21.05_15_01.txt,gps_complex_giroc.csv

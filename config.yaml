@@ -1,0 +1,37 @@
+# Configurare centralizată — Timișoara NetMob Light
+# Suprascrie valorile implicite din src/config.py (dacă PyYAML e instalat).
+# Modifică aici parametrii, fără a edita codul.
+
+seed: 42
+
+handoff:
+  horizon_s: 15            # orizont pentru handoff_next (secunde)
+  peak_hours: [7, 8, 9, 16, 17, 18, 19]
+  high_speed_kmh: 35       # prag pentru is_high_speed
+
+join_tolerances:
+  gps: "2s"                # toleranță aliniere radio -> GPS
+  speedtest: "10s"         # toleranță aliniere Speedtest
+
+validation:
+  test_size: 0.25          # fracțiune sesiuni în holdout (GroupShuffleSplit)
+  cv_folds: 5              # GroupKFold
+
+features:
+  seq_len: 30              # fereastră secvențială (secunde) pentru modelele deep
+  rolling_speed_window: 15
+  handoff_history_windows: [30, 60]
+
+model:
+  xgboost:
+    n_estimators: 300
+    max_depth: 6
+    learning_rate: 0.05
+    subsample: 0.9
+    colsample_bytree: 0.9
+  random_forest:
+    n_estimators: 300
+    max_depth: 12
+    min_samples_leaf: 5
+
+city_center: [45.7542, 21.2260]   # Timișoara (aprox.)

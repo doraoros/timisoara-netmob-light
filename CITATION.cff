@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: "Timișoara NetMob Light — Urban LTE Serving-Cell-Change Prediction Dataset"
+message: "If you use this software or dataset description, please cite it as below."
+authors:
+  - family-names: "Oros"
+    given-names: "Teodora"
+repository-code: "https://github.com/doraoros/timisoara-netmob-light"
+version: "0.1.0"
+date-released: "2026-05-31"
+keywords:
+  - LTE
+  - handover
+  - serving cell
+  - mobility
+  - Timișoara
+  - NetMonster
+  - machine learning
+license: MIT
