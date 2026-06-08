@@ -87,7 +87,7 @@ Figura `stage_comparison.png` ilustrează grafic această evoluție, iar `featur
 
 Pentru a explica deciziile modelului dincolo de importanța bazată pe impuritate, am aplicat analiza **SHAP** pe XGBoost (Stage 2), pe sesiunile holdout (detalii în `reports/text/explainability.md`; figuri: `shap_beeswarm.png`, `shap_importance_bar.png`, `shap_dependence_dwell_time.png`, `shap_dependence_handoff_history.png`).
 
-Ierarhia globală (medie |SHAP|) confirmă dominanța **timpului de staționare pe celulă**, urmat de aria de localizare, contextul temporal ciclic, modul de transport, viteza medie mobilă și identitatea celulei (CID target-encoded). Graficul de dependență `dwell_time × cell_id` arată un efect monoton (staționare mică → contribuție negativă; staționare mare → contribuție pozitivă, „overdue for handover"), modulat de rata istorică de handover a celulei. Structura „în trepte" a acestui grafic face vizibilă, în mod transparent, regularitatea indusă de expandarea pe segmente egale — un argument de rigoare, nu de slăbiciune.
+Ierarhia globală (medie |SHAP|) confirmă dominanța **timpului de staționare pe celulă**, urmat de aria de localizare, contextul temporal ciclic, modul de transport, viteza medie mobilă și identitatea celulei (CID target-encoded). Graficul de dependență `dwell_time × cell_id` arată un efect monoton crescător (staționare mică → contribuție negativă; staționare mare → contribuție pozitivă, „overdue for handover"), modulat de rata istorică de handover a celulei. Structura „în trepte" a acestui grafic face vizibilă, în mod transparent, regularitatea indusă de expandarea pe segmente egale — un argument de rigoare, nu de slăbiciune.
 
 ## 10. Concluzie metodologică
 

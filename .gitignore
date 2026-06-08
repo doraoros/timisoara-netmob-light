@@ -39,6 +39,7 @@ Thumbs.db
 dissertation/ARTICLE*.docx
 scripts/build_article*.py
 scripts/experiment_ablation.py
+scripts/rewrite_history_3commits.ps1
 reports/figures/article_en/
 reports/text/article_en_stats.json
 reports/text/ablation_study.json

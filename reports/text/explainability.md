@@ -17,7 +17,7 @@ Ierarhia globală confirmă și nuanțează concluziile din analiza de importan�
 
 ## Interacțiunea cheie: timp de staționare × identitatea celulei
 
-Graficul de dependență `shap_dependence_dwell_time` arată un efect **monoton** clar: la timp de staționare mic, contribuția SHAP este puternic negativă (modelul împinge predicția spre „fără handover iminent"), iar pe măsură ce timpul de staționare crește, contribuția devine puternic pozitivă (handover iminent), cu un prag de inversiune în jurul a 40–50 de secunde. Codarea prin culoare a ratei istorice de handover a celulei (CID target-encoded) evidențiază **interacțiunea**: pentru același timp de staționare, celulele cu istoric de handover diferit primesc contribuții diferite.
+Graficul de dependență `shap_dependence_dwell_time` arată un efect **monoton crescător** clar: la timp de staționare mic, contribuția SHAP este puternic negativă (modelul împinge predicția spre „fără handover iminent"), iar pe măsură ce timpul de staționare crește, contribuția devine puternic pozitivă (handover iminent), cu un prag de inversiune în jurul a 40–50 de secunde. Codarea prin culoare a ratei istorice de handover a celulei (CID target-encoded) evidențiază **interacțiunea**: pentru același timp de staționare, celulele cu istoric de handover diferit primesc contribuții diferite.
 
 ## Observație critică (onestitate metodologică)
 

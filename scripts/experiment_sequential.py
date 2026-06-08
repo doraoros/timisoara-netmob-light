@@ -221,10 +221,11 @@ def main():
     fig, ax = plt.subplots(figsize=(7, 4.3))
     b1 = ax.bar(x - 0.2, roc, 0.4, label="ROC-AUC", color="#2980b9")
     b2 = ax.bar(x + 0.2, pr, 0.4, label="PR-AUC", color="#e67e22")
-    ax.axhline(0.5, color="#7f8c8d", linestyle="--", linewidth=1)
     ax.set_xticks(x)
     ax.set_xticklabels([short[m] for m in order])
-    ax.set_ylabel("Holdout score (unseen sessions)")
+    ax.set_ylabel("Holdout score")
+    ax.set_title("Performance comparison of XGBoost and sequential deep-learning models",
+                 fontsize=11)
     ax.set_ylim(0, 0.9)
     ax.legend(fontsize=9)
     ax.grid(axis="y", alpha=0.3)

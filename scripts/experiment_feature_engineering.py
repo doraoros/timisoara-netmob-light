@@ -186,6 +186,34 @@ def plot_stage_comparison(stage1, stage2, metric="roc_auc"):
     plt.close()
 
 
+CATEGORY_COLORS = {
+    "Network dynamics": "#16a085",
+    "Mobility": "#2980b9",
+    "Cell identity": "#e67e22",
+    "Temporal context": "#8e44ad",
+    "Categorical": "#c0392b",
+}
+
+_NETWORK = {"num__dwell_time_s", "num__handoff_history_30s",
+            "num__handoff_history_60s", "num__unique_pci_last_60s"}
+_MOBILITY = {"num__speed_kmh", "num__rolling_mean_speed_15s",
+             "num__rolling_std_speed_15s", "num__speed_delta_5s",
+             "num__is_high_speed"}
+_CELL_ID = {"te__cid", "te__code", "num__frequency", "num__area"}
+
+
+def _feature_category(name: str) -> str:
+    if name.startswith("cat__"):
+        return "Categorical"
+    if name in _NETWORK:
+        return "Network dynamics"
+    if name in _MOBILITY:
+        return "Mobility"
+    if name in _CELL_ID:
+        return "Cell identity"
+    return "Temporal context"
+
+
 STAGE2_LABELS = {
     "num__speed_kmh": "Speed (km/h)",
     "num__rolling_mean_speed_15s": "Rolling mean speed (15 s)",
@@ -211,25 +239,70 @@ STAGE2_LABELS = {
 
 
 def plot_stage2_importance(df):
+    """Top-12 importance of the main Stage 2 model (XGBoost) as normalized
+    mean |SHAP| on holdout sessions, colored by feature category, with
+    percentage labels and legend."""
+    import shap
+    from matplotlib.patches import Patch
+
     numeric, target_enc, categorical = stage2_columns(df)
     cols = numeric + target_enc + categorical
     X, y, groups = df[cols].copy(), df["handoff_next"].astype(int), df["session_id"]
     splitter = GroupShuffleSplit(n_splits=1, test_size=0.25, random_state=RANDOM_STATE)
-    tr, _ = next(splitter.split(X, y, groups=groups))
+    tr, te = next(splitter.split(X, y, groups=groups))
+    y_tr = y.iloc[tr]
+
     preproc = make_preprocessor(numeric, target_enc, categorical, scale=False)
-    rf = RandomForestClassifier(n_estimators=400, max_depth=14, min_samples_leaf=5,
-                                class_weight="balanced", random_state=RANDOM_STATE, n_jobs=-1)
-    pipe = Pipeline([("preprocessor", preproc), ("model", rf)])
-    pipe.fit(X.iloc[tr], y.iloc[tr])
+    xgb = XGBClassifier(
+        n_estimators=400, max_depth=6, learning_rate=0.05,
+        subsample=0.9, colsample_bytree=0.9, eval_metric="aucpr",
+        tree_method="hist",
+        scale_pos_weight=_spw(y_tr), random_state=RANDOM_STATE, n_jobs=-1)
+    pipe = Pipeline([("preprocessor", preproc), ("model", xgb)])
+    pipe.fit(X.iloc[tr], y_tr)
+
     names = pipe.named_steps["preprocessor"].get_feature_names_out()
+    X_te = pipe.named_steps["preprocessor"].transform(X.iloc[te])
+    if hasattr(X_te, "toarray"):
+        X_te = X_te.toarray()
+    X_te = np.asarray(X_te, dtype=np.float32)
+    explainer = shap.TreeExplainer(pipe.named_steps["model"])
+    mean_abs = np.abs(explainer.shap_values(X_te)).mean(axis=0)
+
     imp = pd.DataFrame({"feature": names,
-                        "importance": pipe.named_steps["model"].feature_importances_})
-    imp = imp.sort_values("importance", ascending=False).head(12).iloc[::-1]
-    labels = [STAGE2_LABELS.get(f, f.split("__")[-1]) for f in imp["feature"]]
-    fig, ax = plt.subplots(figsize=(6.5, 4.5))
-    ax.barh(labels, imp["importance"], color="#16a085")
-    ax.set_xlabel("Impurity-based importance (Random Forest, Stage 2)")
+                        "share": 100.0 * mean_abs / mean_abs.sum()})
+    imp = imp.sort_values("share", ascending=False).head(12).iloc[::-1]
+
+    def _nice(f):
+        if f in STAGE2_LABELS:
+            return STAGE2_LABELS[f]
+        raw = f.split("__")[-1]
+        for prefix, pretty in (("transport_mode_", "Transport mode: "),
+                               ("route_id_", "Route: "),
+                               ("operator_", "Operator: "),
+                               ("technology_", "Technology: ")):
+            if raw.startswith(prefix):
+                return pretty + raw[len(prefix):]
+        return raw
+
+    labels = [_nice(f) for f in imp["feature"]]
+    colors = [CATEGORY_COLORS[_feature_category(f)] for f in imp["feature"]]
+
+    fig, ax = plt.subplots(figsize=(7.2, 4.8))
+    bars = ax.barh(labels, imp["share"], color=colors)
+    for b, v in zip(bars, imp["share"]):
+        ax.text(b.get_width() + 0.4, b.get_y() + b.get_height() / 2,
+                f"{v:.1f}%", va="center", fontsize=8.5)
+    ax.set_xlabel("Share of total mean |SHAP| (%)")
+    ax.set_title("Top-12 predictive features identified in Stage 2\n"
+                 "(XGBoost, mean |SHAP| on holdout sessions)",
+                 fontsize=11)
+    ax.set_xlim(0, float(imp["share"].max()) * 1.14)
     ax.grid(axis="x", alpha=0.3)
+    present = [c for c in CATEGORY_COLORS
+               if any(_feature_category(f) == c for f in imp["feature"])]
+    ax.legend(handles=[Patch(color=CATEGORY_COLORS[c], label=c) for c in present],
+              loc="lower right", fontsize=8.5, frameon=True)
     plt.tight_layout()
     plt.savefig(OUT_FIG / "feature_importance_stage2.png", dpi=300)
     plt.close()
